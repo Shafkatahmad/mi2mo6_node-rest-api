@@ -28,5 +28,11 @@
     "name": "Portable SSD 1TB",
     "description": "Compact high-speed external SSD with USB 3.2 support and durable metal body.",
     "price": 8500
+  },
+  {
+    "id": 1778498340960,
+    "name": "Product Test - 1",
+    "description": "Product description - 1",
+    "price": 600
   }
 ]

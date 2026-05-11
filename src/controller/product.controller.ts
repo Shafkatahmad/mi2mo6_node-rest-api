@@ -1,5 +1,5 @@
 import type { IncomingMessage, ServerResponse } from "http";
-import { readProduct } from "../service/product.service";
+import { insertProduct, readProduct } from "../service/product.service";
 import type { IProduct } from "../types/product.type";
 import { parseBody } from "../utility/parseBody";
 
@@ -48,12 +48,29 @@ export const productController = async (
     );
   } else if (method === "POST" && url === "/products") {
     const body = await parseBody(req);
-    console.log("Body", body);
+    const products = readProduct(); // [{}, {}, {}]
+    /**
+     * The body we get from Postman via calling a function which takes IncomingMessage (s) as chunk of inputs and returns the whole IncomingMessage. chunk of IncomingMessage from parseBody.
+     * {
+            "name": "Product Test",
+            "description": "Product description",
+            "price": 3500
+        }
+     */
+    // console.log("Body", body);
+    const newProduct = {
+      id: Date.now(),
+      ...body,
+    };
+    // console.log(newProduct);
+    products.push(newProduct); //[{}, {}, {}, {new}]
+    // console.log(products);
+    insertProduct(products);
     res.writeHead(200, { "content-type": "application/json" });
     res.end(
       JSON.stringify({
         message: "Products created successfully",
-        // data: products,
+        data: newProduct,
       }),
     );
   }
