@@ -1,7 +1,32 @@
 [
   {
     "id": 1,
-    "name": "Product - 1",
-    "price": 500
+    "name": "Wireless Bluetooth Headphones",
+    "description": "High-quality over-ear wireless headphones with noise cancellation and 20 hours battery backup.",
+    "price": 4500
+  },
+  {
+    "id": 2,
+    "name": "Mechanical Gaming Keyboard",
+    "description": "RGB backlit mechanical keyboard with blue switches for fast and responsive typing.",
+    "price": 3200
+  },
+  {
+    "id": 3,
+    "name": "Smart Fitness Watch",
+    "description": "Water-resistant smartwatch with heart rate monitoring, sleep tracking, and step counter.",
+    "price": 2800
+  },
+  {
+    "id": 4,
+    "name": "USB-C Fast Charger",
+    "description": "30W fast charging adapter compatible with smartphones, tablets, and laptops.",
+    "price": 1200
+  },
+  {
+    "id": 5,
+    "name": "Portable SSD 1TB",
+    "description": "Compact high-speed external SSD with USB 3.2 support and durable metal body.",
+    "price": 8500
   }
 ]
