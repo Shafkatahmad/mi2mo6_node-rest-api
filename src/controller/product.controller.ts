@@ -47,6 +47,7 @@ export const productController = async (
       }),
     );
   } else if (method === "POST" && url === "/products") {
+    // created product by POST method
     const body = await parseBody(req);
     const products = readProduct(); // [{}, {}, {}]
     /**
@@ -71,6 +72,34 @@ export const productController = async (
       JSON.stringify({
         message: "Products created successfully",
         data: newProduct,
+      }),
+    );
+  } else if (method === "PUT" && id !== null) {
+    const body = await parseBody(req);
+    const products = readProduct();
+
+    const index = products.findIndex((p: IProduct) => p.id === id);
+    if (index < 0) {
+      res.writeHead(404, { "content-type": "application/json" });
+      res.end(
+        JSON.stringify({
+          message: "Product Not Found",
+          data: null,
+        }),
+      );
+    }
+
+    // console.log(products[index]);
+    // UPDATED THE PRODUCT BY PUT METHOD
+    products[index] = { id: products[index].id, ...body };
+
+    // WRITE THE PRODUCT IN THE DATABASE
+    insertProduct(products);
+    res.writeHead(200, { "content-type": "application/json" });
+    res.end(
+      JSON.stringify({
+        message: "Product Updated Successfully",
+        data: products[index],
       }),
     );
   }
